@@ -7,7 +7,6 @@
 # Duration: 22.68 minutes
 # Duration on server: 13.21 minutes
 primes = [2,3]
-test_set = []
 x=0
 for t in range(2,2000001):
     for p in primes:
