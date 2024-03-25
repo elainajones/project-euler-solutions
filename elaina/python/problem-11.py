@@ -24,19 +24,30 @@ def main():
         [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48],
     ]
 
-    right = []
-    m = 0
+    largest = 0
     for y in grid:
         for x in y:
             i = y.index(x)
-            if i >= len(y)-5:
+            if i == len(y)-5:
                 break
-            p = y[i:i+4]
-            if math.prod(p) > m:
-                right = [(x,grid.index(y))]
-            elif math.prod(p) == m:
-                right.append((x,grid.index(y)))
-    print(right)
+            elif 0 in y[i:i+4]:
+                break
+            p = math.prod(y[i:i+4])
+            if p > largest:
+                largest = p
+
+
+    print(largest) 
+    for i in range(len(grid)-4):
+        for x in range(len(grid[i])):
+            p = []
+            for y in grid[i:i+4]:
+                p.append(y[x])
+            p = math.prod(p)
+            if p > largest:
+                largest = p
+
+    print(largest) 
 
 if __name__ == "__main__":
     main()
