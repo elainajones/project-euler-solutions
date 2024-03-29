@@ -1,6 +1,39 @@
 #include <stdio.h>
 
 void main() {
+    //int num = 2000000;
+    int num = 10;
+    int prime = 2;
+    int next = prime;
+    int sum = prime;
+
+    int x, y;
+    for (x = 2; x <= num; x++) {
+        for (y = prime; y < x; y++) {
+            if (x % y == 0 && y < x) {
+                x += 1;
+                y = 2;
+            } else if (y > x / prime) {
+                break;
+            } else if (x >= prime*next) {
+                prime = next;
+            }
+        }
+        
+        if (x % prime != 0 && x <= num) {
+            sum += x;
+            next = x;
+        }
+        printf("test %d\t", x); printf("prime %d\t", prime); printf("next %d\n", next);
+    }
+    
+    printf("%d\n", sum);
+}
+
+/*
+#include <stdio.h>
+
+void main() {
     int primes[1000000] = {2, 3};
 
     int p_count = 2;
@@ -31,4 +64,4 @@ void main() {
     
     printf("%f\n", p_sum);
 }
-
+*/
