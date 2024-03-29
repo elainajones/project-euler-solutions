@@ -31,7 +31,6 @@ def main():
             p = math.prod(y[x_in:x_in+4])
             if p > largest:
                 largest = p
-    print(largest) 
 
     for y_in in range(len(grid)-4):
         for x_in in range(len(grid[y_in])):
@@ -41,7 +40,6 @@ def main():
             p = math.prod(p)
             if p > largest:
                 largest = p
-    print(largest) 
     
     for y_in in range(len(grid)-4):
         for x in grid[y_in][:-4]:
@@ -51,7 +49,22 @@ def main():
             p = []
             for i in range(4):
                 p.append(grid[y_in+i][x_in+i])
-                print(p)
+            p = math.prod(p)
+                 
+            if p > largest:
+                largest = p
+    
+    # Easy cake grid flip for positive slope hahaha
+    grid = grid[::-1]
+    #TODO: Not dry, fix?
+    for y_in in range(len(grid)-4):
+        for x in grid[y_in][:-4]:
+            y = grid[y_in]
+            x_in = y.index(x)
+            
+            p = []
+            for i in range(4):
+                p.append(grid[y_in+i][x_in+i])
             p = math.prod(p)
                  
             if p > largest:
