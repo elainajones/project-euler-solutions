@@ -26,28 +26,39 @@ def main():
 
     largest = 0
     for y in grid:
-        for x in y:
-            i = y.index(x)
-            if i == len(y)-5:
-                break
-            elif 0 in y[i:i+4]:
-                break
-            p = math.prod(y[i:i+4])
+        for x in y[:-4]:
+            x_in = y.index(x)
+            p = math.prod(y[x_in:x_in+4])
             if p > largest:
                 largest = p
-
-
     print(largest) 
-    for i in range(len(grid)-4):
-        for x in range(len(grid[i])):
+
+    for y_in in range(len(grid)-4):
+        for x_in in range(len(grid[y_in])):
             p = []
-            for y in grid[i:i+4]:
-                p.append(y[x])
+            for y in grid[y_in:y_in+4]:
+                p.append(y[x_in])
             p = math.prod(p)
             if p > largest:
                 largest = p
-
     print(largest) 
+    
+    for y_in in range(len(grid)-4):
+        for x in grid[y_in][:-4]:
+            y = grid[y_in]
+            x_in = y.index(x)
+            
+            p = []
+            for i in range(4):
+                p.append(grid[y_in+i][x_in+i])
+                print(p)
+            p = math.prod(p)
+                 
+            if p > largest:
+                largest = p
+    print(largest) 
+
+
 
 if __name__ == "__main__":
     main()
